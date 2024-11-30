@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos de Pacientes</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            background-color: #f8f9fa; /* Cinza claro */
+            color: #000; /* Preto */
+            padding: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Gráficos de Pacientes que Entraram</h1>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="text-center">Gráfico de Linha</h2>
+                <canvas id="pacienteLineChart" class="w-100" height="200"></canvas>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="text-center">Gráfico de Barras</h2>
+                <canvas id="pacienteBarChart" class="w-100" height="200"></canvas>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="text-center">Gráfico de Pizza</h2>
+                <canvas id="pacientePieChart" class="w-100" height="200"></canvas>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="text-center">Gráfico de Radar</h2>
+                <canvas id="pacienteRadarChart" class="w-100" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctxLine = document.getElementById('pacienteLineChart').getContext('2d');
+        var pacienteLineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                datasets: [{
+                    label: 'Número de Pacientes',
+                    data: [12, 19, 15, 30],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        var ctxBar = document.getElementById('pacienteBarChart').getContext('2d');
+        var pacienteBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril'],
+                datasets: [{
+                    label: 'Número de Pacientes',
+                    data: [40, 60, 30, 80],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        var ctxPie = document.getElementById('pacientePieChart').getContext('2d');
+        var pacientePieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Cardiologia', 'Neurologia', 'Pediatria', 'Ginecologia'],
+                datasets: [{
+                    label: 'Distribuição de Pacientes por Departamento',
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        var ctxRadar = document.getElementById('pacienteRadarChart').getContext('2d');
+        var pacienteRadarChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Pressão Arterial', 'Temperatura', 'Batimento Cardíaco', 'Saturação de Oxigênio', 'Peso'],
+                datasets: [{
+                    label: 'Indicadores de Saúde dos Pacientes',
+                    data: [80, 98, 72, 90, 70],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
